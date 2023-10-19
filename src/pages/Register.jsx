@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
+import Copyright from 'components/Copyright/Copyright';
 
 // Validation for registration form
 const validationSchema = yup.object({
@@ -32,28 +33,6 @@ const validationSchema = yup.object({
     .required('Password is required'),
 });
 
-// Function which created copyright string
-const Copyright = props => {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-      <a
-        color="inherit"
-        href="https://github.com/Fatiuk"
-        style={{ marginRight: '4px', color: 'inherit' }}
-      >
-        Andrii Fatiuk
-      </a>
-      {new Date().getFullYear()}
-    </Typography>
-  );
-};
-
 const SignUp = () => {
   const formik = useFormik({
     initialValues: {
@@ -69,7 +48,7 @@ const SignUp = () => {
   });
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container maxWidth="xs">
       <CssBaseline />
       <Box
         sx={{
