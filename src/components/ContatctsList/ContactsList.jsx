@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AtomicSpinner from 'atomic-spinner';
-import { getContacts, getFilter } from 'redux/selectors';
+import { getContacts } from 'redux/contacts/selectors';
+import { getFilter } from 'redux/filter/selectors';
 import {
   ContactListWrap,
   PhonebookList,
   PhonebookItem,
 } from './ContactsList.styled';
 import ContactsItem from 'components/ContactsItem/ContactsItem';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/operations';
 
 const ContactList = () => {
   const dispatch = useDispatch();

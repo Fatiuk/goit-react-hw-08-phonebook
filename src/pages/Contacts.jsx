@@ -1,5 +1,3 @@
-// ============ Section ============
-import Section from '../components/Section/Section';
 // ============ ContactForm ============
 import ContactForm from '../components/ContactForm/ContactForm';
 // ============ ContactList ============
@@ -9,12 +7,13 @@ import ContactList from '../components/ContatctsList/ContactsList';
 
 const Contacts = () => {
   return (
-    <Section title="📚 Phonebook 📞">
+    <>
+      <h1>📚 Phonebook 📞</h1>
       <ContactForm></ContactForm>
       <h2>Contacts</h2>
       <Filter></Filter>
       <ContactList></ContactList>
-    </Section>
+    </>
   );
 };
 
