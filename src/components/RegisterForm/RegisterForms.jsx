@@ -41,13 +41,13 @@ const RegisterForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values, null, 3));
       console.log(values);
     },
   });
 
   return (
-    <Container maxWidth="xs">
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
         sx={{

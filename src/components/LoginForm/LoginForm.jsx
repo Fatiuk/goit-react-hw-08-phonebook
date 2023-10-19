@@ -16,7 +16,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
 import Copyright from 'components/Copyright/Copyright';
 
-// Validation for registration form
+// Validation for login form
 const validationSchema = yup.object({
   email: yup
     .string('Enter your email')
