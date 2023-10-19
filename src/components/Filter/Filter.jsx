@@ -1,6 +1,6 @@
-import { setQueryFilter } from 'redux/filter/slice';
-import { FilterInput } from './Filter.styled';
+import { OutlinedInput } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { setQueryFilter } from 'redux/filter/slice';
 
 function Filter() {
   const dispatch = useDispatch();
@@ -11,7 +11,8 @@ function Filter() {
   };
 
   return (
-    <FilterInput
+    <OutlinedInput
+      fullWidth
       type="text"
       name="filter"
       placeholder="Search by name"

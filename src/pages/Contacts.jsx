@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Card } from '@mui/material';
 // ============ ContactForm ============
 import ContactForm from '../components/ContactForm/ContactForm';
 // ============ ContactList ============
@@ -10,7 +10,6 @@ const Contacts = () => {
   return (
     <Container
       component="main"
-      maxWidth="xs"
       sx={{
         marginTop: 8,
         display: 'flex',
@@ -18,11 +17,13 @@ const Contacts = () => {
         alignItems: 'center',
       }}
     >
-      <h1>📚 Phonebook 📞</h1>
-      <ContactForm></ContactForm>
-      <h2>Contacts</h2>
-      <Filter></Filter>
-      <ContactList></ContactList>
+      <Card sx={{ p: 4, maxWidth: 1024 }}>
+        <h1>📚 Phonebook 📞</h1>
+        <ContactForm></ContactForm>
+        <h2>Contacts</h2>
+        <Filter></Filter>
+        <ContactList></ContactList>
+      </Card>
     </Container>
   );
 };
