@@ -1,7 +1,7 @@
 // ============ React Router ============
 import { Route, Routes } from 'react-router-dom';
 // ============ ResponsiveAppBar ============
-import ResponsiveAppBar from './SharedLayout/SharedLayout';
+import SharedLayout from './SharedLayout/SharedLayout';
 // ============ HomePage ============
 import HomePage from 'pages/HomePage';
 // ============ SignUp ============
@@ -25,7 +25,7 @@ const App = () => {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Routes>
-        <Route path="/" element={<ResponsiveAppBar />}>
+        <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           <Route path="registration" element={<SignUp />} />
           <Route path="login" element={<SignIn />} />

@@ -14,6 +14,8 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 import Copyright from 'components/Copyright/Copyright';
 
 // Validation for registration form
@@ -33,6 +35,9 @@ const validationSchema = yup.object({
 });
 
 const RegisterForm = () => {
+  // Create a Redux dispatcher
+  const dispatch = useDispatch();
+  // Initialization Formik
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -43,6 +48,7 @@ const RegisterForm = () => {
     onSubmit: values => {
       alert(JSON.stringify(values, null, 3));
       console.log(values);
+      dispatch(register(values));
     },
   });
 
