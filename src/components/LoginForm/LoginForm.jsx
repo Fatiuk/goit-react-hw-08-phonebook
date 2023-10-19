@@ -18,10 +18,6 @@ import Copyright from 'components/Copyright/Copyright';
 
 // Validation for registration form
 const validationSchema = yup.object({
-  name: yup
-    .string('Enter your full name')
-    .required('Full name is required')
-    .matches(/^[A-Za-z\s]+$/, 'Name can only contain (ENG) letters'),
   email: yup
     .string('Enter your email')
     .email('Enter a valid email')
