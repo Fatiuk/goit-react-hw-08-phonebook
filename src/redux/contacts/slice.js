@@ -10,6 +10,7 @@ export const contactInitialState = {
 const handlePending = state => {
   state.isLoading = true;
 };
+
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
