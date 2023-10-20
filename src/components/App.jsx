@@ -16,6 +16,10 @@ import SignIn from 'pages/Login';
 import Contacts from 'pages/Contacts';
 // ============ Refresh operation ============
 import { refreshUser } from 'redux/auth/operations';
+// ============ RestrictedRoute ============
+import { RestrictedRoute } from './RestrictedRoute';
+// ============ PrivateRoute ============
+import { PrivateRoute } from './PrivateRoutes';
 // ============ MUI Theme ============
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -40,9 +44,24 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="registration" element={<SignUp />} />
-          <Route path="login" element={<SignIn />} />
-          <Route path="contacts" element={<Contacts />} />
+          <Route
+            path="registration"
+            element={
+              <RestrictedRoute redirectTo="/contacts" component={<SignUp />} />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute redirectTo="/contacts" component={<SignIn />} />
+            }
+          />
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Contacts />} />
+            }
+          />
         </Route>
       </Routes>
     </ThemeProvider>
