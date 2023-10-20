@@ -14,7 +14,7 @@ const validationSchema = yup.object({
       /^[a-zA-Zа-яА-Я]+(([ ' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
       'Name contains invalid characters'
     ),
-  phone: yup
+  number: yup
     .string('Enter contact number')
     .required('Password is required')
     .matches(
@@ -30,7 +30,7 @@ const ContactForm = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
-      phone: '',
+      number: '',
     },
     validationSchema: validationSchema,
     onSubmit: values => {
@@ -59,15 +59,15 @@ const ContactForm = () => {
       <TextField
         required
         fullWidth
-        autoComplete="phone"
-        id="phone"
-        name="phone"
+        autoComplete="number"
+        id="number"
+        name="number"
         label="Phone Number"
-        value={formik.values.phone}
+        value={formik.values.number}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        error={formik.touched.phone && Boolean(formik.errors.phone)}
-        helperText={formik.touched.phone && formik.errors.phone}
+        error={formik.touched.number && Boolean(formik.errors.number)}
+        helperText={formik.touched.number && formik.errors.number}
         sx={{ mb: 2 }}
       />
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>

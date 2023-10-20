@@ -8,15 +8,21 @@ import {
   PhonebookList,
   PhonebookItem,
 } from './ContactsList.styled';
+import { useAuth } from 'hooks';
 import ContactsItem from 'components/ContactsItem/ContactsItem';
 import { fetchContacts } from 'redux/contacts/operations';
 
 const ContactList = () => {
+  // Create a Redux dispatcher
   const dispatch = useDispatch();
+  // Use auth selectors
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(fetchContacts());
+    }
+  }, [dispatch, isLoggedIn]);
 
   const { items, isLoading, error } = useSelector(getContacts);
   const filter = useSelector(getFilter);
