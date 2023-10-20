@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import stringAvatar from 'utils/avatarCreator';
-import { useAuth } from '../hooks';
+import { useAuth } from '../../hooks';
 
 const HeaderProfile = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
