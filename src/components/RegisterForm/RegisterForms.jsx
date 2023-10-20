@@ -46,9 +46,8 @@ const RegisterForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 3));
-      console.log(values);
       dispatch(register(values));
+      formik.resetForm();
     },
   });
 
