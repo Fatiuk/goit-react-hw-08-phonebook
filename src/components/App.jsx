@@ -14,6 +14,8 @@ import SignUp from 'pages/Register';
 import SignIn from 'pages/Login';
 // ============ Contacts ============
 import Contacts from 'pages/Contacts';
+// ============ Profile ============
+import Profile from 'pages/Profile';
 // ============ Refresh operation ============
 import { refreshUser } from 'redux/auth/operations';
 // ============ RestrictedRoute ============
@@ -62,6 +64,7 @@ const App = () => {
               <PrivateRoute redirectTo="/login" component={<Contacts />} />
             }
           />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </ThemeProvider>
