@@ -15,14 +15,14 @@ import stringAvatar from 'utils/avatarCreator';
 import { useAuth } from '../../hooks';
 
 const HeaderProfile = () => {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElProfile, setAnchorElProfile] = React.useState(null);
 
   const handleOpenUserMenu = event => {
-    setAnchorElUser(event.currentTarget);
+    setAnchorElProfile(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElProfile(null);
   };
 
   // Create a Redux dispatcher
@@ -39,53 +39,55 @@ const HeaderProfile = () => {
               <Avatar {...stringAvatar(user.name)} />
             </IconButton>
           </Tooltip>
-          <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-          >
-            <MenuItem>
-              <Typography
-                textAlign="center"
-                component={Link}
-                to={'/profile'}
-                sx={{
-                  color: 'inherit',
-                  textDecoration: 'none',
-                }}
-              >
-                Profile
-              </Typography>
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                dispatch(logOut());
+          {anchorElProfile && (
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElProfile}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
               }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElProfile)}
+              onClose={handleCloseUserMenu}
             >
-              <Typography
-                textAlign="center"
-                component={Link}
-                to={'/'}
-                sx={{
-                  color: 'inherit',
-                  textDecoration: 'none',
+              <MenuItem>
+                <Typography
+                  textAlign="center"
+                  component={Link}
+                  to={'/profile'}
+                  sx={{
+                    color: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Profile
+                </Typography>
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  dispatch(logOut());
                 }}
               >
-                Log Out
-              </Typography>
-            </MenuItem>
-          </Menu>
+                <Typography
+                  textAlign="center"
+                  component={Link}
+                  to={'/'}
+                  sx={{
+                    color: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Log Out
+                </Typography>
+              </MenuItem>
+            </Menu>
+          )}
         </Box>
       )}
     </>
