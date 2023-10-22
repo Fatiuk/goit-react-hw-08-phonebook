@@ -16,6 +16,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import createToast from 'utils/toast';
 import Copyright from 'components/Copyright/Copyright';
 
 // Validation for registration form
@@ -45,9 +46,13 @@ const RegisterForm = () => {
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      dispatch(register(values));
-      formik.resetForm();
+    onSubmit: async values => {
+      try {
+        const result = await dispatch(register(values)).unwrap(); //unwrap() will throw the rejected value
+        createToast('success', `Welcome ${result.user.name}`);
+      } catch (error) {
+        createToast('error', error);
+      }
     },
   });
 

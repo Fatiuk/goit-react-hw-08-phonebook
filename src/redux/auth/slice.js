@@ -6,12 +6,22 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error: null,
+};
+
+const handlPendinglAuth = state => {
+  state.error = null;
 };
 
 const handleFulfieldlAuth = (state, action) => {
   state.user = action.payload.user;
   state.token = action.payload.token;
   state.isLoggedIn = true;
+};
+
+const handleRejectedlAuth = (state, action) => {
+  state.error = action.payload;
+  state.isLoggedIn = false;
 };
 
 const handleFulfieldlLogOut = state => {
@@ -31,16 +41,16 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
+      .addCase(register.pending, handlPendinglAuth)
       .addCase(register.fulfilled, handleFulfieldlAuth)
+      .addCase(register.rejected, handleRejectedlAuth)
       .addCase(logIn.fulfilled, handleFulfieldlAuth)
+      .addCase(logIn.rejected, handleRejectedlAuth)
       .addCase(logOut.fulfilled, handleFulfieldlLogOut)
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
-      .addCase(refreshUser.fulfilled, handleFulfieldlRefresh)
-      .addCase(refreshUser.rejected, state => {
-        state.isRefreshing = false;
-      });
+      .addCase(refreshUser.fulfilled, handleFulfieldlRefresh);
   },
 });
 

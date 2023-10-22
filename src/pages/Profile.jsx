@@ -14,7 +14,8 @@ import stringAvatar from 'utils/avatarCreator';
 
 const Profile = () => {
   // Create a Redux dispatcher
-  const dispatch = useDispatch(); // Use auth selectors
+  const dispatch = useDispatch();
+  // Use auth selectors
   const { isLoggedIn, user } = useAuth();
 
   return (

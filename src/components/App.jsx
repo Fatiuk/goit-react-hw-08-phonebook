@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 // ============ React Router ============
 import { Route, Routes } from 'react-router-dom';
+// ============ Toaster ============
+import { Toaster } from 'react-hot-toast';
 // ============ ResponsiveAppBar ============
 import SharedLayout from './SharedLayout/SharedLayout';
 // ============ HomePage ============
@@ -67,6 +69,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
+      <Toaster />
     </ThemeProvider>
   );
 };
