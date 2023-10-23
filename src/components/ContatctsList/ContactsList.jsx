@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ListItem } from '@mui/material';
+import { Container, Divider, Grid, List, ListItem } from '@mui/material';
 import AtomicSpinner from 'atomic-spinner';
 import { getContacts } from 'redux/contacts/selectors';
 import { getFilter } from 'redux/filter/selectors';
-import { ContactListWrap, PhonebookList } from './ContactsList.styled';
 import { useAuth } from 'hooks';
 import ContactsItem from 'components/ContactsItem/ContactsItem';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -31,19 +30,35 @@ const ContactList = () => {
     : items;
 
   return (
-    <ContactListWrap>
-      {isLoading && <AtomicSpinner />}
+    <Container>
+      {isLoading && (
+        <Grid container justifyContent="center" alignItems="center">
+          <Grid item>
+            <AtomicSpinner />
+          </Grid>
+        </Grid>
+      )}
       {items && !isLoading && (
-        <PhonebookList>
-          {filteredContacts.map(contact => (
-            <ListItem key={contact.id}>
-              <ContactsItem contact={contact}></ContactsItem>
-            </ListItem>
+        <List>
+          {filteredContacts.map((contact, index) => (
+            <React.Fragment key={contact.id}>
+              <ListItem
+                style={{
+                  display: 'flex',
+                  columnGap: 20,
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <ContactsItem contact={contact} />
+              </ListItem>
+              {index !== filteredContacts.length - 1 && <Divider />}
+            </React.Fragment>
           ))}
-        </PhonebookList>
+        </List>
       )}
       {error && <b>{error}</b>}
-    </ContactListWrap>
+    </Container>
   );
 };
 

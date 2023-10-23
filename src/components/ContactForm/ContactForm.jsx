@@ -8,18 +8,19 @@ import { addContact } from 'redux/contacts/operations';
 const validationSchema = yup.object({
   name: yup
     .string('Enter contact name')
-    .required('Email is required')
-    .max(16, 'Number should be of maximum 16 characters length')
+    .required('Name is required')
+    .max(16, 'Max 16 characters for the name')
     .matches(
       /^[a-zA-Zа-яА-Я]+(([ ' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
       'Name contains invalid characters'
     ),
   number: yup
     .string('Enter contact number')
-    .required('Password is required')
+    .required('Contact number is required')
+    .max(20, 'Max 20 characters for the number')
     .matches(
       /\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}/,
-      'Invalid phone number format. Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
+      'Invalid phone number format.'
     ),
 });
 
