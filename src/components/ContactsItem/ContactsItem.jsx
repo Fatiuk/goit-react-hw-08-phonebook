@@ -1,5 +1,4 @@
 import {
-  Box,
   ListItemAvatar,
   Avatar,
   Link,
@@ -17,13 +16,6 @@ function ContactsItem({ contact: { name, number, id } }) {
 
   return (
     <>
-      {/* <ListItemAvatar>
-        <Avatar {...stringAvatar(name)} />
-      </ListItemAvatar>
-      <ListItemText>{name}</ListItemText>
-      <Link href={`tel:${number}`}>{number}</Link>
-      <Chip label="Delete" icon={<DeleteIcon />} onClick={handleDelete}></Chip> */}
-
       <ListItemAvatar>
         <Avatar {...stringAvatar(name)} />
       </ListItemAvatar>
