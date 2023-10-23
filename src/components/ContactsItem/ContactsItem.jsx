@@ -7,6 +7,7 @@ import {
   Box,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import stringAvatar from 'utils/avatarCreator';
@@ -30,7 +31,7 @@ function ContactsItem({ contact: { name, number, id } }) {
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Link href={`tel:${number}`}>{number}</Link>
-        <Chip label="Edit" icon={<DeleteIcon />} onClick={handleDelete}></Chip>
+        <Chip label="Edit" icon={<EditIcon />} onClick={handleDelete}></Chip>
         <Chip
           label="Delete"
           icon={<DeleteIcon />}
