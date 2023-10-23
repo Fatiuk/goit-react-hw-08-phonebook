@@ -1,13 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ListItem } from '@mui/material';
 import AtomicSpinner from 'atomic-spinner';
 import { getContacts } from 'redux/contacts/selectors';
 import { getFilter } from 'redux/filter/selectors';
-import {
-  ContactListWrap,
-  PhonebookList,
-  PhonebookItem,
-} from './ContactsList.styled';
+import { ContactListWrap, PhonebookList } from './ContactsList.styled';
 import { useAuth } from 'hooks';
 import ContactsItem from 'components/ContactsItem/ContactsItem';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -39,9 +36,9 @@ const ContactList = () => {
       {items && !isLoading && (
         <PhonebookList>
           {filteredContacts.map(contact => (
-            <PhonebookItem key={contact.id}>
+            <ListItem key={contact.id}>
               <ContactsItem contact={contact}></ContactsItem>
-            </PhonebookItem>
+            </ListItem>
           ))}
         </PhonebookList>
       )}

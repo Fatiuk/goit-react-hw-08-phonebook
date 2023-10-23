@@ -1,23 +1,24 @@
+import { Link, Chip, ListItem } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
-import {
-  ContactSpan,
-  ContactLink,
-  ContactDeleteBtn,
-} from './ContactsItem.styled';
+import { ContactSpan } from './ContactsItem.styled';
 
 function ContactsItem({ contact: { name, number, id } }) {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(id));
 
   return (
-    <>
+    <ListItem
+      style={{
+        display: 'flex',
+        gap: 40,
+      }}
+    >
       <ContactSpan>{name}</ContactSpan>
-      <ContactLink href={`tel:${number}`}>{number}</ContactLink>
-      <ContactDeleteBtn type="button" onClick={handleDelete}>
-        Delete
-      </ContactDeleteBtn>
-    </>
+      <Link href={`tel:${number}`}>{number}</Link>
+      <Chip label="Delete" icon={<DeleteIcon />} onClick={handleDelete}></Chip>
+    </ListItem>
   );
 }
 
