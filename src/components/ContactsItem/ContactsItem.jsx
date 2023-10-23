@@ -4,6 +4,7 @@ import {
   Link,
   Chip,
   ListItemText,
+  Box,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
@@ -16,12 +17,26 @@ function ContactsItem({ contact: { name, number, id } }) {
 
   return (
     <>
-      <ListItemAvatar>
-        <Avatar {...stringAvatar(name)} />
-      </ListItemAvatar>
-      <ListItemText>{name}</ListItemText>
-      <Link href={`tel:${number}`}>{number}</Link>
-      <Chip label="Delete" icon={<DeleteIcon />} onClick={handleDelete}></Chip>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <ListItemAvatar>
+          <Avatar {...stringAvatar(name)} />
+        </ListItemAvatar>
+        <ListItemText>{name}</ListItemText>
+      </Box>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Link href={`tel:${number}`}>{number}</Link>
+        <Chip label="Edit" icon={<DeleteIcon />} onClick={handleDelete}></Chip>
+        <Chip
+          label="Delete"
+          icon={<DeleteIcon />}
+          onClick={handleDelete}
+        ></Chip>
+      </Box>
     </>
   );
 }

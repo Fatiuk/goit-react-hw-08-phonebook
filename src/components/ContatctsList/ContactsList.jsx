@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Divider, Grid, List, ListItem } from '@mui/material';
+import { Divider, Grid, List, ListItem, useMediaQuery } from '@mui/material';
 import AtomicSpinner from 'atomic-spinner';
 import { getContacts } from 'redux/contacts/selectors';
 import { getFilter } from 'redux/filter/selectors';
@@ -29,8 +29,10 @@ const ContactList = () => {
       )
     : items;
 
+  const isPhoneDisplay = useMediaQuery('(max-width:426px)');
+
   return (
-    <Container>
+    <>
       {isLoading && (
         <Grid container justifyContent="center" alignItems="center">
           <Grid item>
@@ -43,10 +45,11 @@ const ContactList = () => {
           {filteredContacts.map((contact, index) => (
             <React.Fragment key={contact.id}>
               <ListItem
-                style={{
+                sx={{
                   display: 'flex',
                   columnGap: 20,
-                  justifyContent: 'space-between',
+                  rowGap: isPhoneDisplay ? 2 : 0,
+                  justifyContent: isPhoneDisplay ? 'center' : 'space-between',
                   flexWrap: 'wrap',
                 }}
               >
@@ -58,7 +61,7 @@ const ContactList = () => {
         </List>
       )}
       {error && <b>{error}</b>}
-    </Container>
+    </>
   );
 };
 
